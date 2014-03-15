@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'omniauth'
+gem 'omniauth', '~> 1.2.1'
 
 gem 'omniauth-openid-connect', :github => 'ninjapanzer/omniauth-openid-connect'
 
@@ -30,6 +30,10 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+group :development, :test do
+  gem 'pry'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
