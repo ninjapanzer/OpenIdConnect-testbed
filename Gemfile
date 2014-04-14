@@ -17,7 +17,9 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'omniauth', '~> 1.2.1'
 
-gem 'omniauth-openid-connect', :github => 'ninjapanzer/omniauth-openid-connect'
+#gem 'omniauth-openid-connect', :github => 'ninjapanzer/omniauth-openid-connect'
+gem 'omniauth-openid-connect', :path => '../omniauth-openid-connect'
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
