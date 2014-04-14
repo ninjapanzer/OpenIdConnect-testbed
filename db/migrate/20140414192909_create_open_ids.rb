@@ -1,6 +1,6 @@
-class CreateOpenIds < ActiveRecord::Migration
+class CreateOmniauthConfigs < ActiveRecord::Migration
   def change
-    create_table :open_ids do |t|
+    create_table :OmniauthConfigs do |t|
       t.string :group_id
       t.text :description
       t.text :config_json

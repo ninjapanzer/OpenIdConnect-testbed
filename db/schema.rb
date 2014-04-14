@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414192909) do
-
-  create_table "open_ids", force: true do |t|
-    t.string   "group_id"
-    t.text     "description"
-    t.text     "config_json"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140414145908) do
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
