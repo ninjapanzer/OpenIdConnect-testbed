@@ -15,6 +15,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       secret: ENV['OA_CLIENT_SECRET'],
       redirect_uri: "/auth/openid_connect/callback",
     }
+  }
 end
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
