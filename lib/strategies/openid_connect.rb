@@ -43,15 +43,15 @@ class OpenidConnect
   end
 =begin
   {
-  name: :my_provider,
+  name: :texas_sso,
   scope: [:openid, :email, :profile, :address],
   response_type: :code,
   client_options: {
     port: 443,
     scheme: "https",
     host: "myprovider.com",
-    identifier: ENV["OP_CLIENT_ID"],
-    secret: ENV["OP_SECRET_KEY"],
+    identifier: '@!1111!0008!14DD.6808',
+    secret: '6ed71cb9-7270-455d-9a65-6a46377d47ad',
     redirect_uri: "http://myapp.com/users/auth/openid_connect/callback",
   }
 }
