@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414145908) do
+ActiveRecord::Schema.define(version: 20140422204149) do
+
+  create_table "omni_auth_configs", force: true do |t|
+    t.string   "name"
+    t.string   "strategy"
+    t.string   "json"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

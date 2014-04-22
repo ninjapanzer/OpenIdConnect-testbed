@@ -1,46 +1,49 @@
-class OpenidConnect
-  attr_accessor :name, :scope, :response_type, :client_options
+module Strategies
+  class OpenidConnect
 
-  DEFAULT_CLIENT_OPTIONS = {
-    port: 443,
-    scheme: 'https',
-    host: 'myprovider.com',
-    identifier: ENV['OP_CLIENT_ID'],
-    secret: ENV['OP_SECRET_KEY'],
-    redirect_uri: "#{ENV['BASE_URL']}/users/auth/openid_connect/callback",
-  }
+    cattr_accessor :singular_attributes, :hash_attributes
+    self.singular_attributes = [:name, :scope, :response_type]
+    self.hash_attributes = [:client_options]
+    attr_accessor *(singular_attributes+hash_attributes)
 
-
-  def initialize(options={})
-    @name = options.fetch(:name, 'generic_openid_client')
-    @scope = options.fetch(:scheme, [:openid, :email, :profile, :address])
-    @response_type = options.fetch(:response_type, ':code')
-    config_client_options(fetch(:client_options, nil))
-  end
-
-  def config_client_options(options={})
-    @client_options = {
-      port: options.fetch(:port, DEFAULT_CLIENT_OPTIONS[:port]),
-      scheme: options.fetch(:scheme, DEFAULT_CLIENT_OPTIONS[:scheme]),
-      host: options.fetch(:host, DEFAULT_CLIENT_OPTIONS[:host]),
-      identifier: options.fetch(:identifier, DEFAULT_CLIENT_OPTIONS[:identifier]),
-      secret: options.fetch(:secret, DEFAULT_CLIENT_OPTIONS[:secret]),
-      redirect_uri: options.fetch(:redirect_uri, DEFAULT_CLIENT_OPTIONS[:redirect_uri]),
+    DEFAULT_CLIENT_OPTIONS = {
+      port: 443,
+      scheme: 'https',
+      host: 'myprovider.com',
+      identifier: '',
+      secret: '',
+      redirect_uri: "#{ENV['BASE_URL']}/users/auth/openid_connect/callback",
+      dynamic_client: false,
+      redirect_urls: []
     }
-  end
 
-  def client_config
-    {
-      name: name,
-      scope: scope,
-      response_type: response_type,
-      client_options: client_options
-    }
-  end
 
-  def json
-    client_config.to_json
-  end
+    def initialize(options={})
+      @name = 'generic_openid_client'
+      @scope = [:openid, :email, :profile, :address]
+      @response_type = :code
+      @client_options = DEFAULT_CLIENT_OPTIONS
+      self.class.singular_attributes.each do |attr|
+        send "#{attr}=", options[attr.to_sym] unless options[attr.to_sym].nil?
+      end
+      self.class.hash_attributes.each do |attr|
+        default = self.class.const_get "DEFAULT_#{attr.upcase}"
+        send "#{attr}=", default.merge(options[attr.to_sym]) unless options[attr.to_sym].nil?
+      end
+    end
+
+    def client_config
+      {
+        name: name,
+        scope: scope,
+        response_type: response_type,
+        client_options: client_options
+      }
+    end
+
+    def json
+      client_config.to_json
+    end
 =begin
   {
   name: :texas_sso,
@@ -56,4 +59,5 @@ class OpenidConnect
   }
 }
 =end
+  end
 end

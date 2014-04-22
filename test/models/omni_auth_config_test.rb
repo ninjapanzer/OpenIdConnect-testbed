@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OpenIdTest < ActiveSupport::TestCase
+class OmniAuthConfigTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
