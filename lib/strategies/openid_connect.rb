@@ -4,7 +4,7 @@ module Strategies
     cattr_accessor :singular_attributes, :hash_attributes
     self.singular_attributes = [:name, :scope, :response_type]
     self.hash_attributes = [:client_options]
-    attr_accessor *(singular_attributes+hash_attributes)
+    attr_accessor *singular_attributes+hash_attributes
 
     DEFAULT_CLIENT_OPTIONS = {
       port: 443,
@@ -17,6 +17,10 @@ module Strategies
       redirect_urls: []
     }
 
+    def self.from_json(json){
+      options = JSON.parse(json)
+      new(options)
+    }
 
     def initialize(options={})
       @name = 'generic_openid_client'
