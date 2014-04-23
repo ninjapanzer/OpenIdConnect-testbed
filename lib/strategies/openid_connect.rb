@@ -17,10 +17,10 @@ module Strategies
       redirect_urls: []
     }
 
-    def self.from_json(json){
+    def self.from_json(json)
       options = JSON.parse(json)
       new(options)
-    }
+    end
 
     def initialize(options={})
       @name = 'generic_openid_client'
