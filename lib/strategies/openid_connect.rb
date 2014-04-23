@@ -1,5 +1,5 @@
 module Strategies
-  class OpenidConnect
+  class OpenIDConnect
 
     cattr_accessor :singular_attributes, :hash_attributes
     self.singular_attributes = [:name, :scope, :response_type]
