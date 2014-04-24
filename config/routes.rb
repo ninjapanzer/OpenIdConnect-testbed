@@ -1,6 +1,7 @@
 OpenIdConnectTestbed::Application.routes.draw do
   
-  get '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/openid_connect/auth/callback' => 'sessions#create', via: [:get, :post]
+  match '/auth/openid_connect/auth' => 'sessions#new', via: [:get, :post]
   get 'auth/failure', to: redirect('/')
   delete 'signout', to: 'sessions#destroy', as: 'signout'
 
