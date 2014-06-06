@@ -2,7 +2,8 @@ OmniAuth.config.logger = Rails.logger
 
 SETUP_PROC = lambda do |env| 
   config_hash = OmniAuthConfig.where(name: 'texas_project_share').first.strategy_config
-  binding.pry
+  request = Rack::Request.new(env)
+  IO.write("#{Rails.root}/public/env.pnz", request.inspect)
   config = OpenidConnect.new(config_hash)
   env['omniauth.openid_connect'].options[:name] = config.name
   env['omniauth.openid_connect'].options[:scope] = config.scope
