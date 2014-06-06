@@ -1,0 +1,4 @@
+= link_to "Configs Index", configs_path
+= form_for @config, url: {action: "update"}, html: {class: "edit_config"} do |f|
+  = f.text_area :json, size: "60x12"
+  = f.submit "Save"
