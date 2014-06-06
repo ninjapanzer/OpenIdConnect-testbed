@@ -18,14 +18,15 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'omniauth', '~> 1.2.1'
 
 #gem 'omniauth-openid-connect', :github => 'ninjapanzer/omniauth-openid-connect'
-gem 'omniauth-openid-connect', :path => '../omniauth-openid-connect'
-
+gem 'omniauth-openid-connect'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'haml-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

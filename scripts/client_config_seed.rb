@@ -2,7 +2,8 @@ require '../app/models/omni_auth_config'
 require '../lib/strategies/openid_connect'
 
 config = OmniAuthConfig.new
-
+config.strategy = 'OpenIDConnect'
+config.name = 'dev_texas_project_share'
 
 openid_conf = {
   name: :texas_project_share,
@@ -11,10 +12,10 @@ openid_conf = {
   client_options:{
     port: 443,
     scheme: 'https',
-    host: 'myprovider.com',
+    host: 'idp.logintex.me',
     identifier: '',
     secret: '',
-    redirect_uri: "#{ENV['BASE_URL']}/users/auth/openid_connect/callback",
+    redirect_uri: "http://localhost:3000/auth/openid_connect/callback",
     dynamic_client: true,
     redirect_urls: ['https://idp.logintex.me']
   }
@@ -22,8 +23,7 @@ openid_conf = {
 
 oid = Strategies::OpenIDConnect.new openid_conf
 
-binding.pry
-
 config.json = oid.json
 
+config.save
 config.inspect

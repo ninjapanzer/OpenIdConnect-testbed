@@ -1,0 +1,4 @@
+.configs
+  - @configs.each do |config|
+    .config
+      = link_to config.strategy_config.name, edit_config_path(config)
