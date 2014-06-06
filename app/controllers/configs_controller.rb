@@ -12,7 +12,11 @@ class ConfigsController < ApplicationController
   end
 
   def update
-    @config = OmniAuthConfig.update(params[:id], params[:config])
+    @config = OmniAuthConfig.update(params[:id], config_params)
     redirect_to edit_config_path(@config)
+  end
+
+  def config_params
+    params.require(:omni_auth_config).permit(:json)
   end
 end
