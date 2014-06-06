@@ -4,16 +4,15 @@ class Strategies::OpenIDConnect
   cattr_accessor :singular_attributes, :hash_attributes
   self.singular_attributes = [:name, :scope, :response_type]
   self.hash_attributes = [:client_options]
-  attr_accessor *singular_attributes+hash_attributes
+  attr_accessor *singular_attributes + hash_attributes
 
   DEFAULT_CLIENT_OPTIONS = {
     port: 443,
     scheme: 'https',
     host: 'myprovider.com',
-    identifier: '',
-    secret: '',
+    identifier: '@!DA85.5F98.95A1.CA3B!0001!5FD3.3646!0008!F1D7.7791',
+    secret: '75222a86-1238-4508-b0aa-81850df6e4e6',
     redirect_uri: "#{ENV['BASE_URL']}/users/auth/openid_connect/callback",
-    dynamic_client: false,
     redirect_urls: []
   }
 

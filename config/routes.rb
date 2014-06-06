@@ -1,9 +1,11 @@
 OpenIdConnectTestbed::Application.routes.draw do
   
-  match '/auth/openid_connect/auth/callback' => 'sessions#create', via: [:get, :post]
-  match '/auth/openid_connect/auth' => 'sessions#new', via: [:get, :post]
+  match '/auth/openid_connect/callback' => 'sessions#create', via: [:get, :post]
+  match '/auth/openid_connect' => 'sessions#new', via: [:get, :post]
   get 'auth/failure', to: redirect('/')
   delete 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :configs
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
