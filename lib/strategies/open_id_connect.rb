@@ -12,8 +12,7 @@ class Strategies::OpenIDConnect
     host: 'myprovider.com',
     identifier: '@!DA85.5F98.95A1.CA3B!0001!5FD3.3646!0008!F1D7.7791',
     secret: '75222a86-1238-4508-b0aa-81850df6e4e6',
-    redirect_uri: "#{ENV['BASE_URL']}/users/auth/openid_connect/callback",
-    redirect_urls: []
+    redirect_uri: "#{ENV['BASE_URL']}/users/auth/openid_connect/callback"
   }
 
   def self.from_json(json)
