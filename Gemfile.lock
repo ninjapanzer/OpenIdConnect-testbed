@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/thinkthroughmath/omniauth-openid-connect.git
-  revision: f0d6a6be32fe0efbc4828c8ec4dc155f89cddd68
+PATH
+  remote: ../omniauth-openid-connect
   specs:
     omniauth-openid-connect (0.1.0)
       activesupport
