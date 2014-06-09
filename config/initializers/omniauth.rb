@@ -4,6 +4,7 @@ SETUP_PROC = lambda do |env|
   config = OmniAuthConfig.where(name: 'dev_texas_project_share').first.strategy_config
   request = Rack::Request.new(env)
   IO.write("#{Rails.root}/public/env.pnz", request.inspect)
+  IO.write("#{Rails.root}/public/strat_conf.pnz", config.inspect)
   env['omniauth.strategy'].options[:name] = config.name
   env['omniauth.strategy'].options[:scope] = config.scope
   env['omniauth.strategy'].options[:response_type] = config.response_type
